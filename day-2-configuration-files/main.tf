@@ -1,11 +1,11 @@
-resource "aws_instance" "jenkins_agent" {
-  ami           = "ami-02b297871a94f4b42"  # Replace with a valid AMI ID
-  instance_type = "t3.micro"
+resource "aws_instance" "name" {
+    ami = var.ami_id
+    instance_type = var.type
+    subnet_id = aws_subnet.name.id
+    tags = {
+      name ="dev"
+    }
   
-  tags = {
-    Name        = "Jenkins-Build-Agent-01"  # <--- THIS IS THE AWS INSTANCE NAME
-    Environment = "Dev"
-  }
 }
 }
 resource "aws_vpc" "name" {
@@ -22,6 +22,7 @@ resource "aws_subnet" "name" {
   
 
 }
+
 
 
 
